@@ -1,5 +1,31 @@
-# CMSC_124
-Design and Implementation of Programming Languages
+# CMSC_124 - Design and Implementation of Programming Languages
+This repository is for our project in CMSC 124 where we are creating our own Integrated Development Environment (IDE) for our own programming language.
 
-# UI/UX
+## UI/UX
 Install [Godot](https://godotengine.org/download/windows/) to run the file.
+
+#### 📋 TO DO:
+- Save button function
+- Save As button function
+- Undo button function
+- Redo button function
+- Copy button function
+- Cut  button function
+- Paste button function
+- Compile button function
+- Run button function
+- Welcome & Loading Screen
+- Extra Aesthetic
+
+## Backend
+Language used is to be determined.
+
+#### 📋 TO DO:
+- Grammar
+- Parser
+- Scanner
+- Code Generation
+
+
+
+

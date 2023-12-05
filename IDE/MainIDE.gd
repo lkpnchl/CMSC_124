@@ -1,37 +1,73 @@
 extends Control
 
-var file_dialog : FileDialog  # Reference to the FileDialog instance
+var open_file_dialog : FileDialog  # Reference to the FileDialog instanc
+var save_file_dialog : FileDialog  # Reference to the FileDialog instance
+var content : String
 var code_edit : CodeEdit  # Reference to the CodeEdit instance
 
 func _ready():
 	# Load references to FileDialog and CodeEdit
-	file_dialog = $OpenFileDialog
+	open_file_dialog = $OpenFileDialog
+	save_file_dialog = $SaveFileDialog
 	code_edit = get_node("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit")
 
 	# Connect signals
 	connect_signals()
 
 func connect_signals():
+	# Connect Close button to empty text
+	var new_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/New")
+	new_button.pressed.connect(_on_new_pressed)
+	
 	# Connect the Open File button pressed signal to a function
 	var open_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open")
 	open_button.pressed.connect(_on_open_pressed)
-	file_dialog.file_selected.connect(_on_file_selected)
-	# Connect the FileDialog's file_selected signal to a function
+	# Connect the File Dialog to open file
+	open_file_dialog.file_selected.connect(_on_file_selected)
+	
+	# Connect the Save File button pressed signal to a function
+	var save_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Save")
+	save_button.pressed.connect(_on_save_pressed)
+	save_file_dialog.file_selected.connect(_on_file_selected)
+	
+	# Connect Close button to empty text
+	var close_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Close")
+	close_button.pressed.connect(_on_close_pressed)
 
+# Function called when the New File button is pressed
+func _on_new_pressed() -> void:
+	code_edit.text = ""
+	
 # Function called when the Open File button is pressed
 func _on_open_pressed() -> void:
 	# Open the file dialog
-	file_dialog.popup_centered()
+	open_file_dialog.popup_centered()
+
+# Function called when the Save File button is pressed
+func _on_save_pressed() -> void:
+	# Open the file dialog
+	save_file_dialog.popup_centered()
 
 # Function called when a file is selected in the FileDialog
 func _on_file_selected(path: String) -> void:
-	# Read the file and set the content in the CodeEdit
-	var file = FileAccess.open(path, FileAccess.READ)
-	if FileAccess.file_exists(path):
-		var content : String = file.get_as_text()
-		code_edit.text = content
-	else:
-		show_error("Failed to load the selected file.")
+	if _on_open_pressed: # Read the file and set the content in the CodeEdit
+		var file = FileAccess.open(path, FileAccess.READ)
+		if FileAccess.file_exists(path):
+			content = file.get_as_text()
+			code_edit.text = content
+		else:
+			show_error("Failed to load the selected file.")
+	elif _on_save_pressed:
+		var file = FileAccess.open(path, FileAccess.WRITE)
+		print(file)
+		print(content)
+		content = code_edit.get_as_text()
+		print(content)
+		print(path)
+		file.store_string(content)
+
+func _on_close_pressed() -> void:
+	_on_new_pressed()
 
 func show_error(message: String) -> void:
 	# Display the error to the user, perhaps with a Popup or Label

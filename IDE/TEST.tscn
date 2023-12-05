@@ -139,6 +139,29 @@ access = 2
 filters = PackedStringArray(".bob", ".BOB")
 script = ExtResource("2_vi52c")
 
+[node name="SaveFileDialog" type="FileDialog" parent="."]
+transparent_bg = true
+gui_embed_subwindows = true
+sdf_oversize = 0
+initial_position = 2
+size = Vector2i(700, 400)
+transient = false
+exclusive = false
+unresizable = true
+borderless = true
+always_on_top = true
+popup_window = true
+extend_to_title = true
+min_size = Vector2i(700, 70)
+content_scale_mode = 2
+theme = SubResource("Theme_bmwp3")
+theme_override_colors/folder_icon_color = Color(0, 0.721569, 0.556863, 1)
+theme_override_colors/file_icon_color = Color(0.313726, 0.658824, 1, 1)
+ok_button_text = "Save"
+access = 2
+filters = PackedStringArray(".bob", ".BOB")
+script = ExtResource("2_vi52c")
+
 [node name="TextureRect" type="TextureRect" parent="."]
 show_behind_parent = true
 layout_mode = 1

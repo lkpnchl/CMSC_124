@@ -1,7 +1,7 @@
 [gd_scene load_steps=60 format=3 uid="uid://bd5td832yixvn"]
 
-[ext_resource type="Script" path="res://TEST.gd" id="1_3mrrx"]
 [ext_resource type="Texture2D" uid="uid://ud8oft07ou4d" path="res://bg/bg.jpg" id="1_o4lr0"]
+[ext_resource type="Script" path="res://MainIDE.gd" id="1_qvf0p"]
 [ext_resource type="FontFile" uid="uid://bxhoek7fge4o" path="res://fonts/FiraCode-Bold.ttf" id="2_ddpcp"]
 [ext_resource type="Texture2D" uid="uid://doxjeie4hki2e" path="res://icons/new-normal.png" id="2_osjhi"]
 [ext_resource type="Texture2D" uid="uid://csxxwthbhpe4u" path="res://icons/new-pressed.png" id="3_v2peo"]
@@ -106,7 +106,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3mrrx")
+script = ExtResource("1_qvf0p")
 
 [node name="OpenFileDialog" type="FileDialog" parent="."]
 gui_embed_subwindows = true
@@ -114,7 +114,6 @@ sdf_oversize = 0
 title = "Open a File"
 initial_position = 2
 size = Vector2i(312, 162)
-visible = true
 borderless = true
 always_on_top = true
 popup_window = true
@@ -379,3 +378,5 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_g8mcn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/PanelContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
+
+[connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open" to="." method="_on_open_pressed"]

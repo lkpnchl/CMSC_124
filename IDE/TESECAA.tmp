@@ -1,10 +1,9 @@
-[gd_scene load_steps=62 format=3 uid="uid://bd5td832yixvn"]
+[gd_scene load_steps=61 format=3 uid="uid://bd5td832yixvn"]
 
 [ext_resource type="Texture2D" uid="uid://ud8oft07ou4d" path="res://bg/bg.jpg" id="1_o4lr0"]
 [ext_resource type="Script" path="res://MainIDE.gd" id="1_qvf0p"]
 [ext_resource type="FontFile" uid="uid://bxhoek7fge4o" path="res://fonts/FiraCode-Bold.ttf" id="2_ddpcp"]
 [ext_resource type="Texture2D" uid="uid://doxjeie4hki2e" path="res://icons/new-normal.png" id="2_osjhi"]
-[ext_resource type="FontFile" uid="uid://ckufgv3xjdy1x" path="res://fonts/FiraCode-Regular.ttf" id="2_va5tx"]
 [ext_resource type="Script" path="res://OpenFileDialog.gd" id="2_vi52c"]
 [ext_resource type="Texture2D" uid="uid://csxxwthbhpe4u" path="res://icons/new-pressed.png" id="3_v2peo"]
 [ext_resource type="Texture2D" uid="uid://ck3hlham8hwfg" path="res://icons/new-hover.png" id="4_lmoyn"]
@@ -55,10 +54,6 @@
 [ext_resource type="FontFile" uid="uid://cqhs2u7h8gjsm" path="res://fonts/FiraCode-Medium.ttf" id="46_0llj4"]
 
 [sub_resource type="Theme" id="Theme_bmwp3"]
-resource_local_to_scene = true
-default_font = ExtResource("2_va5tx")
-default_font_size = 12
-MarginContainer/styles/Style = null
 
 [sub_resource type="Theme" id="Theme_41a0g"]
 
@@ -115,14 +110,12 @@ grow_vertical = 2
 script = ExtResource("1_qvf0p")
 
 [node name="OpenFileDialog" type="FileDialog" parent="."]
-transparent_bg = true
 gui_embed_subwindows = true
 sdf_oversize = 0
 title = "Open a File"
 initial_position = 2
 size = Vector2i(700, 400)
-transient = false
-exclusive = false
+visible = true
 unresizable = true
 borderless = true
 always_on_top = true
@@ -131,11 +124,10 @@ extend_to_title = true
 min_size = Vector2i(700, 70)
 content_scale_mode = 2
 theme = SubResource("Theme_bmwp3")
-theme_override_colors/folder_icon_color = Color(0, 0.721569, 0.556863, 1)
-theme_override_colors/file_icon_color = Color(0.313726, 0.658824, 1, 1)
 ok_button_text = "Open"
 file_mode = 0
 access = 2
+root_subfolder = "user://"
 filters = PackedStringArray(".bob", ".BOB")
 script = ExtResource("2_vi52c")
 
@@ -360,7 +352,7 @@ theme_override_colors/line_number_color = Color(0.407843, 0.407843, 0.407843, 1)
 theme_override_colors/word_highlighted_color = Color(0.176471, 0.121569, 0.360784, 1)
 theme_override_colors/line_length_guideline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("46_0llj4")
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 10
 placeholder_text = "Start typing here . . ."
 wrap_mode = 1
 highlight_all_occurrences = true

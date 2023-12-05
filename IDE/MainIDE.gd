@@ -26,14 +26,12 @@ func _on_open_pressed() -> void:
 # Function called when a file is selected in the FileDialog
 func _on_file_selected(path: String) -> void:
 	# Read the file and set the content in the CodeEdit
-#	var file : File = File.new()
-#	if file.file_exists(path) and file.open(path, File.READ) == OK:
-#		var content : String = file.get_as_text()
-#		file.close()
-#		code_edit.text = content
-#	else:
-#		show_error("Failed to load the selected file.")
-	pass
+	var file = FileAccess.open(path, FileAccess.READ)
+	if FileAccess.file_exists(path):
+		var content : String = file.get_as_text()
+		code_edit.text = content
+	else:
+		show_error("Failed to load the selected file.")
 
 func show_error(message: String) -> void:
 	# Display the error to the user, perhaps with a Popup or Label

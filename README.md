@@ -9,8 +9,8 @@ PL Folder contains the Grammar, Parser, Scanner, etc. Literally, the programming
 Install [Godot](https://godotengine.org/download/windows/) to run the file.
 
 #### 📋 TO DO:
-- Save button function
-- Save As button function
+~~- Save button function~~
+~~- Save As button function~~
 - Undo button function
 - Redo button function
 - Copy button function

@@ -1,7 +1,7 @@
 extends Control
 
 @onready var loadscreen = preload("res://load.tscn")
-var root = get_tree().get_root()
+@onready var root = get_tree().get_root()
 @onready var buttons = root.get_node("Main/TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX")
 @onready var save = buttons.get_node("Save")
 @onready var saveas = buttons.get_node("Saveas")
@@ -40,17 +40,19 @@ func update_window_title():
 func _on_new_pressed() -> void:
 	if content!=code_edit.text || (len(code_edit.text)>0 && current_file=="Untitled"):
 		print("unsaved")
+		# Display popup
+		code_edit.clear()		
+		code_edit.placeholder_text = "Start typing here..."		
 		current_file = "Untitled"
 		update_window_title()
-		code_edit.text = ''
-		code_edit.placeholder_text = "Start typing here..."
 	else:
 		print("OK")
+		code_edit.clear()					
+		code_edit.placeholder_text = "Start typing here..."		
 		current_file = "Untitled"
 		update_window_title()
-		code_edit.editable = true
-		code_edit.placeholder_text = "Start typing here..."
-		
+		code_edit.editable = true	
+	
 	save.disabled = true
 	saveas.disabled = true
 	close.disabled = true
@@ -86,10 +88,10 @@ func _on_open_file_dialog_file_selected(path):
 func _on_save_pressed() -> void:
 	var path = current_file
 	if path == 'Untitled':
-		print("wompwomp")
+		print("Save As")
 		save_as_file_dialog.popup_centered()
 	else: 
-		print("mompmomp")
+		print("Save As")
 		var file = FileAccess.open(path, FileAccess.WRITE)
 		file.store_string(code_edit.text)
 		file.close()
@@ -105,6 +107,17 @@ func _on_save_as_file_dialog_file_selected(path):
 	update_window_title()
 	save.disabled = true		
 
+### CLOSE
+
+### UNDO
+func _on_undo_pressed():
+	code_edit.undo()
+	
+### REDO
+func _on_redo_pressed():
+	code_edit.redo()
+
+
 func show_error(message: String) -> void:
 	# Display the error to the user, perhaps with a Popup or Label
 	print("Error: " + message)
@@ -114,10 +127,10 @@ func _on_code_edit_text_changed():
 		save.disabled = false
 		saveas.disabled = false
 		close.disabled = false
-		undo.disabled = false
-		redo.disabled = false
+		undo.disabled = false 
+		redo.disabled = false # Disabled unless Undo is performed
 		copy.disabled = false
 		cut.disabled = false
-		paste.disabled = false
+		paste.disabled = true # Disabled unless Copy/Cut is performed
 		compile.disabled = false
 		run.disabled = false # Replace with function body.

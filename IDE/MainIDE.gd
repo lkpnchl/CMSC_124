@@ -1,5 +1,6 @@
 extends Control
 
+var loadscreen = preload("res://load.tscn")
 var open_file_dialog : FileDialog  # Reference to the FileDialog instanc
 var save_file_dialog : FileDialog  # Reference to the FileDialog instance
 var content : String

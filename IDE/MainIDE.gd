@@ -128,7 +128,7 @@ func _on_code_edit_text_changed():
 		saveas.disabled = false
 		close.disabled = false
 		undo.disabled = false 
-		redo.disabled = false # Disabled unless Undo is performed
+		redo.disabled = true # Disabled unless Undo is performed
 		copy.disabled = false
 		cut.disabled = false
 		paste.disabled = true # Disabled unless Copy/Cut is performed

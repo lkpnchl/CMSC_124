@@ -36,7 +36,8 @@ func connect_signals():
 
 # Function called when the New File button is pressed
 func _on_new_pressed() -> void:
-	code_edit.text = ""
+	code_edit.editable = true
+	code_edit.placeholder_text = "Start typing here..."
 	
 # Function called when the Open File button is pressed
 func _on_open_pressed() -> void:

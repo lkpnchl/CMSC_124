@@ -1,6 +1,7 @@
 extends Control
 
-@onready var root = get_tree().get_root()
+@onready var loadscreen = preload("res://load.tscn")
+var root = get_tree().get_root()
 @onready var buttons = root.get_node("Main/TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX")
 @onready var save = buttons.get_node("Save")
 @onready var saveas = buttons.get_node("Saveas")
@@ -15,6 +16,7 @@ extends Control
 
 var open_file_dialog : FileDialog  # Reference to the FileDialog instance
 var save_as_file_dialog : FileDialog  # Reference to the FileDialog instance
+
 var content : String
 var code_edit : CodeEdit  # Reference to the CodeEdit instance
 var file : FileAccess # For FileAccess

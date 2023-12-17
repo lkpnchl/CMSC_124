@@ -1,67 +1,67 @@
-[gd_scene load_steps=64 format=3 uid="uid://bd5td832yixvn"]
+[gd_scene load_steps=65 format=3 uid="uid://blbdrafqqr2ce"]
 
-[ext_resource type="Texture2D" uid="uid://ud8oft07ou4d" path="res://bg/bg.jpg" id="1_o4lr0"]
-[ext_resource type="Script" path="res://MainIDE.gd" id="1_qvf0p"]
-[ext_resource type="FontFile" uid="uid://bxhoek7fge4o" path="res://fonts/FiraCode-Bold.ttf" id="2_ddpcp"]
-[ext_resource type="Texture2D" uid="uid://doxjeie4hki2e" path="res://icons/new-normal.png" id="2_osjhi"]
-[ext_resource type="FontFile" uid="uid://ckufgv3xjdy1x" path="res://fonts/FiraCode-Regular.ttf" id="2_va5tx"]
-[ext_resource type="Script" path="res://OpenFileDialog.gd" id="2_vi52c"]
-[ext_resource type="Texture2D" uid="uid://csxxwthbhpe4u" path="res://icons/new-pressed.png" id="3_v2peo"]
-[ext_resource type="Texture2D" uid="uid://ck3hlham8hwfg" path="res://icons/new-hover.png" id="4_lmoyn"]
-[ext_resource type="Texture2D" uid="uid://behq13fvg7kp3" path="res://icons/open-normal.png" id="6_56fdl"]
-[ext_resource type="Texture2D" uid="uid://b7s5o1kuttd7n" path="res://icons/new-disable.png" id="6_poir6"]
-[ext_resource type="Texture2D" uid="uid://dtxnuon05sufs" path="res://icons/open-pressed.png" id="7_7mgmx"]
-[ext_resource type="Texture2D" uid="uid://qwnyxm30dkss" path="res://icons/open-hover.png" id="8_m4kbi"]
-[ext_resource type="Texture2D" uid="uid://bvq68f4hdkd8n" path="res://icons/open-disable.png" id="9_a8ss7"]
-[ext_resource type="Texture2D" uid="uid://bsnjm0k05n3h" path="res://icons/save-normal.png" id="10_6v7d0"]
-[ext_resource type="Texture2D" uid="uid://cqobwdjbv4pkq" path="res://icons/save-pressed.png" id="11_jvl15"]
-[ext_resource type="Texture2D" uid="uid://dp8lwywd2irbg" path="res://icons/save-hover.png" id="12_ub0n3"]
-[ext_resource type="Texture2D" uid="uid://d2j4taq30pf2" path="res://icons/save-disable.png" id="13_nhlsp"]
-[ext_resource type="Texture2D" uid="uid://coasbkmvmpnei" path="res://icons/close-normal.png" id="14_0vo8o"]
-[ext_resource type="Texture2D" uid="uid://b5uo1kffocxlx" path="res://icons/saveas-normal.png" id="14_7j276"]
-[ext_resource type="Texture2D" uid="uid://cp4r4ry0cdxwx" path="res://icons/close-pressed.png" id="15_iiaje"]
-[ext_resource type="Texture2D" uid="uid://2y0737ry3w1l" path="res://icons/saveas-pressed.png" id="15_jqtti"]
-[ext_resource type="Texture2D" uid="uid://cge83rl2tc4eg" path="res://icons/close-hover.png" id="16_3dl71"]
-[ext_resource type="Texture2D" uid="uid://byg5v8jyr8jos" path="res://icons/saveas-hover.png" id="16_6xoms"]
-[ext_resource type="Texture2D" uid="uid://cjwo68ke8fhjb" path="res://icons/saveas-disable.png" id="17_6ca8g"]
-[ext_resource type="Texture2D" uid="uid://sivklv15kits" path="res://icons/close-disable.png" id="17_oovuv"]
-[ext_resource type="Texture2D" uid="uid://bq2ry6mjv150" path="res://icons/undo-normal.png" id="18_8npa1"]
-[ext_resource type="Texture2D" uid="uid://drnjsarq3houg" path="res://icons/cut-normal.png" id="18_rcf4b"]
-[ext_resource type="Texture2D" uid="uid://wmx3w87frbrq" path="res://icons/undo-pressed.png" id="19_dcyi4"]
-[ext_resource type="Texture2D" uid="uid://bwlno0mtdw1iq" path="res://icons/cut-pressed.png" id="19_ydupn"]
-[ext_resource type="Texture2D" uid="uid://dcsabepp1ua4n" path="res://icons/undo-hover.png" id="20_7jcu4"]
-[ext_resource type="Texture2D" uid="uid://c0luf51tivu6r" path="res://icons/cut-disable.png" id="21_2l1x6"]
-[ext_resource type="Texture2D" uid="uid://dtcfqukhft0py" path="res://icons/undo-disable.png" id="21_2t2xs"]
-[ext_resource type="Texture2D" uid="uid://bekju4j41edn1" path="res://icons/redo-normal.png" id="22_oiy2k"]
-[ext_resource type="Texture2D" uid="uid://coqrrlwwtawaf" path="res://icons/redo-pressed.png" id="23_yuw6r"]
-[ext_resource type="Texture2D" uid="uid://budg3r01aj13u" path="res://icons/redo-hover.png" id="24_8c0t7"]
-[ext_resource type="Texture2D" uid="uid://b3bd1l1hlcfyl" path="res://icons/redo-disable.png" id="25_jcrgj"]
-[ext_resource type="Texture2D" uid="uid://btmo74pqope2y" path="res://icons/copy-normal.png" id="26_vugnr"]
-[ext_resource type="Texture2D" uid="uid://ct1cpopse8lq4" path="res://icons/copy-pressed.png" id="27_jw3mf"]
-[ext_resource type="Texture2D" uid="uid://d8yyx1gp0sso" path="res://icons/copy-hover.png" id="28_ld6iy"]
-[ext_resource type="Texture2D" uid="uid://dpj1pglef7xlm" path="res://icons/copy-disable.png" id="29_26dcf"]
-[ext_resource type="Texture2D" uid="uid://cs472mo4cikue" path="res://icons/cut-hover.png" id="30_rnir3"]
-[ext_resource type="Texture2D" uid="uid://d3312gds8ehg6" path="res://icons/paste-normal.png" id="34_eyt30"]
-[ext_resource type="Texture2D" uid="uid://qtrkfmr8auxn" path="res://icons/paste-pressed.png" id="35_tseid"]
-[ext_resource type="Texture2D" uid="uid://d111d27gsb1an" path="res://icons/paste-hover.png" id="36_qfjq1"]
-[ext_resource type="Texture2D" uid="uid://bee2agwsrmnv8" path="res://icons/paste-disable.png" id="37_7ya76"]
-[ext_resource type="Texture2D" uid="uid://q8wensduaqnc" path="res://icons/compile-normal.png" id="38_g8lxh"]
-[ext_resource type="Texture2D" uid="uid://cnxogqyhlf0my" path="res://icons/compile-pressed.png" id="39_uwr6v"]
-[ext_resource type="Texture2D" uid="uid://cssbd5u0ctc6v" path="res://icons/compile-hover.png" id="40_gd8hl"]
-[ext_resource type="Texture2D" uid="uid://bbevok5amekrn" path="res://icons/compile-disable.png" id="41_of6or"]
-[ext_resource type="Texture2D" uid="uid://c24x20p28xh0o" path="res://icons/run-normal.png" id="42_r0dft"]
-[ext_resource type="Texture2D" uid="uid://ci84y3ibdmrwx" path="res://icons/run-pressed.png" id="43_j3a0d"]
-[ext_resource type="Texture2D" uid="uid://cwt3nqtkjfh7f" path="res://icons/run-hover.png" id="44_nbld7"]
-[ext_resource type="FontFile" uid="uid://cqhs2u7h8gjsm" path="res://fonts/FiraCode-Medium.ttf" id="46_0llj4"]
-[ext_resource type="Texture2D" uid="uid://daxd6vcwg1qu8" path="res://icons/run-disable.png" id="53_urgxg"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m4vfl"]
+[ext_resource type="Script" path="res://MainIDE.gd" id="1_7urna"]
+[ext_resource type="FontFile" uid="uid://ckufgv3xjdy1x" path="res://fonts/FiraCode-Regular.ttf" id="2_scpkr"]
+[ext_resource type="Script" path="res://OpenFileDialog.gd" id="3_r5kdx"]
+[ext_resource type="Texture2D" uid="uid://ud8oft07ou4d" path="res://bg/bg.jpg" id="4_s8fwe"]
+[ext_resource type="FontFile" uid="uid://bxhoek7fge4o" path="res://fonts/FiraCode-Bold.ttf" id="5_dqvmu"]
+[ext_resource type="Texture2D" uid="uid://doxjeie4hki2e" path="res://icons/new-normal.png" id="6_ldm3m"]
+[ext_resource type="Texture2D" uid="uid://csxxwthbhpe4u" path="res://icons/new-pressed.png" id="7_pinap"]
+[ext_resource type="Texture2D" uid="uid://ck3hlham8hwfg" path="res://icons/new-hover.png" id="8_epqem"]
+[ext_resource type="Texture2D" uid="uid://b7s5o1kuttd7n" path="res://icons/new-disable.png" id="9_xiynt"]
+[ext_resource type="Texture2D" uid="uid://behq13fvg7kp3" path="res://icons/open-normal.png" id="10_ia708"]
+[ext_resource type="Texture2D" uid="uid://dtxnuon05sufs" path="res://icons/open-pressed.png" id="11_hi71p"]
+[ext_resource type="Texture2D" uid="uid://qwnyxm30dkss" path="res://icons/open-hover.png" id="12_qwobn"]
+[ext_resource type="Texture2D" uid="uid://bvq68f4hdkd8n" path="res://icons/open-disable.png" id="13_u77jp"]
+[ext_resource type="Texture2D" uid="uid://bsnjm0k05n3h" path="res://icons/save-normal.png" id="14_tj8bq"]
+[ext_resource type="Texture2D" uid="uid://cqobwdjbv4pkq" path="res://icons/save-pressed.png" id="15_8pqhy"]
+[ext_resource type="Texture2D" uid="uid://dp8lwywd2irbg" path="res://icons/save-hover.png" id="16_01uj1"]
+[ext_resource type="Texture2D" uid="uid://d2j4taq30pf2" path="res://icons/save-disable.png" id="17_5p1pi"]
+[ext_resource type="Texture2D" uid="uid://b5uo1kffocxlx" path="res://icons/saveas-normal.png" id="18_wfuw1"]
+[ext_resource type="Texture2D" uid="uid://2y0737ry3w1l" path="res://icons/saveas-pressed.png" id="19_1rw47"]
+[ext_resource type="Texture2D" uid="uid://byg5v8jyr8jos" path="res://icons/saveas-hover.png" id="20_radxc"]
+[ext_resource type="Texture2D" uid="uid://cjwo68ke8fhjb" path="res://icons/saveas-disable.png" id="21_uqqb3"]
+[ext_resource type="Texture2D" uid="uid://coasbkmvmpnei" path="res://icons/close-normal.png" id="22_la1du"]
+[ext_resource type="Texture2D" uid="uid://cp4r4ry0cdxwx" path="res://icons/close-pressed.png" id="23_80xmi"]
+[ext_resource type="Texture2D" uid="uid://cge83rl2tc4eg" path="res://icons/close-hover.png" id="24_b2rob"]
+[ext_resource type="Texture2D" uid="uid://sivklv15kits" path="res://icons/close-disable.png" id="25_18e0m"]
+[ext_resource type="Texture2D" uid="uid://bq2ry6mjv150" path="res://icons/undo-normal.png" id="26_x2k04"]
+[ext_resource type="Texture2D" uid="uid://wmx3w87frbrq" path="res://icons/undo-pressed.png" id="27_qmccx"]
+[ext_resource type="Texture2D" uid="uid://dcsabepp1ua4n" path="res://icons/undo-hover.png" id="28_swadj"]
+[ext_resource type="Texture2D" uid="uid://dtcfqukhft0py" path="res://icons/undo-disable.png" id="29_24122"]
+[ext_resource type="Texture2D" uid="uid://bekju4j41edn1" path="res://icons/redo-normal.png" id="30_tuhj6"]
+[ext_resource type="Texture2D" uid="uid://coqrrlwwtawaf" path="res://icons/redo-pressed.png" id="31_l0e1a"]
+[ext_resource type="Texture2D" uid="uid://budg3r01aj13u" path="res://icons/redo-hover.png" id="32_214v7"]
+[ext_resource type="Texture2D" uid="uid://b3bd1l1hlcfyl" path="res://icons/redo-disable.png" id="33_wuai7"]
+[ext_resource type="Texture2D" uid="uid://btmo74pqope2y" path="res://icons/copy-normal.png" id="34_xkkhy"]
+[ext_resource type="Texture2D" uid="uid://ct1cpopse8lq4" path="res://icons/copy-pressed.png" id="35_2r37h"]
+[ext_resource type="Texture2D" uid="uid://d8yyx1gp0sso" path="res://icons/copy-hover.png" id="36_i77l2"]
+[ext_resource type="Texture2D" uid="uid://dpj1pglef7xlm" path="res://icons/copy-disable.png" id="37_dfq8w"]
+[ext_resource type="Texture2D" uid="uid://drnjsarq3houg" path="res://icons/cut-normal.png" id="38_tsihs"]
+[ext_resource type="Texture2D" uid="uid://bwlno0mtdw1iq" path="res://icons/cut-pressed.png" id="39_finq0"]
+[ext_resource type="Texture2D" uid="uid://cs472mo4cikue" path="res://icons/cut-hover.png" id="40_pnl2f"]
+[ext_resource type="Texture2D" uid="uid://c0luf51tivu6r" path="res://icons/cut-disable.png" id="41_u3b7o"]
+[ext_resource type="Texture2D" uid="uid://d3312gds8ehg6" path="res://icons/paste-normal.png" id="42_3vs5n"]
+[ext_resource type="Texture2D" uid="uid://qtrkfmr8auxn" path="res://icons/paste-pressed.png" id="43_2ndw7"]
+[ext_resource type="Texture2D" uid="uid://d111d27gsb1an" path="res://icons/paste-hover.png" id="44_jorhu"]
+[ext_resource type="Texture2D" uid="uid://bee2agwsrmnv8" path="res://icons/paste-disable.png" id="45_wrttj"]
+[ext_resource type="Texture2D" uid="uid://q8wensduaqnc" path="res://icons/compile-normal.png" id="46_mqvm4"]
+[ext_resource type="Texture2D" uid="uid://cnxogqyhlf0my" path="res://icons/compile-pressed.png" id="47_j23c7"]
+[ext_resource type="Texture2D" uid="uid://cssbd5u0ctc6v" path="res://icons/compile-hover.png" id="48_kt3n3"]
+[ext_resource type="Texture2D" uid="uid://bbevok5amekrn" path="res://icons/compile-disable.png" id="49_ray88"]
+[ext_resource type="Texture2D" uid="uid://c24x20p28xh0o" path="res://icons/run-normal.png" id="50_4lvot"]
+[ext_resource type="Texture2D" uid="uid://ci84y3ibdmrwx" path="res://icons/run-pressed.png" id="51_l0leq"]
+[ext_resource type="Texture2D" uid="uid://cwt3nqtkjfh7f" path="res://icons/run-hover.png" id="52_5gu0g"]
+[ext_resource type="Texture2D" uid="uid://daxd6vcwg1qu8" path="res://icons/run-disable.png" id="53_mea07"]
+[ext_resource type="FontFile" uid="uid://cqhs2u7h8gjsm" path="res://fonts/FiraCode-Medium.ttf" id="54_uaa0v"]
+[ext_resource type="Script" path="res://CodeEdit.gd" id="55_x2sb3"]
+[ext_resource type="PackedScene" uid="uid://bp6dt0btudhhi" path="res://load.tscn" id="56_53etq"]
 
 [sub_resource type="Theme" id="Theme_bmwp3"]
 resource_local_to_scene = true
-default_font = ExtResource("2_va5tx")
+default_font = ExtResource("2_scpkr")
 default_font_size = 12
-MarginContainer/styles/Style = SubResource("StyleBoxTexture_m4vfl")
+MarginContainer/styles/Style = null
 
 [sub_resource type="Theme" id="Theme_41a0g"]
 
@@ -83,7 +83,15 @@ corner_radius_bottom_left = 5
 corner_detail = 20
 expand_margin_top = 5.0
 
-[sub_resource type="CodeHighlighter" id="CodeHighlighter_efhv8"]
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_5e1qo"]
+resource_local_to_scene = true
+number_color = Color(0.905882, 0, 0, 1)
+symbol_color = Color(0, 0.65098, 0.623529, 1)
+function_color = Color(0.768627, 0.396078, 0.439216, 1)
+member_variable_color = Color(0, 1, 0, 1)
+keyword_colors = {
+"": ""
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epdb2"]
 bg_color = Color(0.976471, 0.976471, 0.976471, 0.976471)
@@ -107,7 +115,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qvf0p")
+script = ExtResource("1_7urna")
+
+[node name="Control" parent="." instance=ExtResource("56_53etq")]
+layout_mode = 1
 
 [node name="OpenFileDialog" type="FileDialog" parent="."]
 transparent_bg = true
@@ -132,9 +143,9 @@ ok_button_text = "Open"
 file_mode = 0
 access = 2
 filters = PackedStringArray(".bob", ".BOB")
-script = ExtResource("2_vi52c")
+script = ExtResource("3_r5kdx")
 
-[node name="SaveAsFileDialog" type="FileDialog" parent="."]
+[node name="SaveFileDialog" type="FileDialog" parent="."]
 transparent_bg = true
 gui_embed_subwindows = true
 sdf_oversize = 0
@@ -155,7 +166,7 @@ theme_override_colors/file_icon_color = Color(0.313726, 0.658824, 1, 1)
 ok_button_text = "Save"
 access = 2
 filters = PackedStringArray(".bob", ".BOB")
-script = ExtResource("2_vi52c")
+script = ExtResource("3_r5kdx")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 show_behind_parent = true
@@ -168,7 +179,7 @@ offset_bottom = 1.125
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_41a0g")
-texture = ExtResource("1_o4lr0")
+texture = ExtResource("4_s8fwe")
 expand_mode = 1
 
 [node name="PanelContainer2" type="PanelContainer" parent="TextureRect"]
@@ -201,7 +212,7 @@ layout_direction = 2
 layout_mode = 2
 size_flags_stretch_ratio = 3.9
 theme_override_colors/default_color = Color(0.313726, 0.658824, 1, 1)
-theme_override_fonts/normal_font = ExtResource("2_ddpcp")
+theme_override_fonts/normal_font = ExtResource("5_dqvmu")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[center][img]res://icons/bob_icon_51.png[/img] Big-O Compiler
@@ -224,10 +235,10 @@ theme_override_constants/separation = 5
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "New File"
-texture_normal = ExtResource("2_osjhi")
-texture_pressed = ExtResource("3_v2peo")
-texture_hover = ExtResource("4_lmoyn")
-texture_disabled = ExtResource("6_poir6")
+texture_normal = ExtResource("6_ldm3m")
+texture_pressed = ExtResource("7_pinap")
+texture_hover = ExtResource("8_epqem")
+texture_disabled = ExtResource("9_xiynt")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -235,10 +246,10 @@ stretch_mode = 5
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Open File"
-texture_normal = ExtResource("6_56fdl")
-texture_pressed = ExtResource("7_7mgmx")
-texture_hover = ExtResource("8_m4kbi")
-texture_disabled = ExtResource("9_a8ss7")
+texture_normal = ExtResource("10_ia708")
+texture_pressed = ExtResource("11_hi71p")
+texture_hover = ExtResource("12_qwobn")
+texture_disabled = ExtResource("13_u77jp")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -247,10 +258,10 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Save File"
 disabled = true
-texture_normal = ExtResource("10_6v7d0")
-texture_pressed = ExtResource("11_jvl15")
-texture_hover = ExtResource("12_ub0n3")
-texture_disabled = ExtResource("13_nhlsp")
+texture_normal = ExtResource("14_tj8bq")
+texture_pressed = ExtResource("15_8pqhy")
+texture_hover = ExtResource("16_01uj1")
+texture_disabled = ExtResource("17_5p1pi")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -259,10 +270,10 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Save File As"
 disabled = true
-texture_normal = ExtResource("14_7j276")
-texture_pressed = ExtResource("15_jqtti")
-texture_hover = ExtResource("16_6xoms")
-texture_disabled = ExtResource("17_6ca8g")
+texture_normal = ExtResource("18_wfuw1")
+texture_pressed = ExtResource("19_1rw47")
+texture_hover = ExtResource("20_radxc")
+texture_disabled = ExtResource("21_uqqb3")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -271,10 +282,10 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Close File"
 disabled = true
-texture_normal = ExtResource("14_0vo8o")
-texture_pressed = ExtResource("15_iiaje")
-texture_hover = ExtResource("16_3dl71")
-texture_disabled = ExtResource("17_oovuv")
+texture_normal = ExtResource("22_la1du")
+texture_pressed = ExtResource("23_80xmi")
+texture_hover = ExtResource("24_b2rob")
+texture_disabled = ExtResource("25_18e0m")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -283,10 +294,10 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Undo Action"
 disabled = true
-texture_normal = ExtResource("18_8npa1")
-texture_pressed = ExtResource("19_dcyi4")
-texture_hover = ExtResource("20_7jcu4")
-texture_disabled = ExtResource("21_2t2xs")
+texture_normal = ExtResource("26_x2k04")
+texture_pressed = ExtResource("27_qmccx")
+texture_hover = ExtResource("28_swadj")
+texture_disabled = ExtResource("29_24122")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -295,10 +306,10 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Redo Action"
 disabled = true
-texture_normal = ExtResource("22_oiy2k")
-texture_pressed = ExtResource("23_yuw6r")
-texture_hover = ExtResource("24_8c0t7")
-texture_disabled = ExtResource("25_jcrgj")
+texture_normal = ExtResource("30_tuhj6")
+texture_pressed = ExtResource("31_l0e1a")
+texture_hover = ExtResource("32_214v7")
+texture_disabled = ExtResource("33_wuai7")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -307,10 +318,10 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Copy Text"
 disabled = true
-texture_normal = ExtResource("26_vugnr")
-texture_pressed = ExtResource("27_jw3mf")
-texture_hover = ExtResource("28_ld6iy")
-texture_disabled = ExtResource("29_26dcf")
+texture_normal = ExtResource("34_xkkhy")
+texture_pressed = ExtResource("35_2r37h")
+texture_hover = ExtResource("36_i77l2")
+texture_disabled = ExtResource("37_dfq8w")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -319,10 +330,10 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Cut Text"
 disabled = true
-texture_normal = ExtResource("18_rcf4b")
-texture_pressed = ExtResource("19_ydupn")
-texture_hover = ExtResource("30_rnir3")
-texture_disabled = ExtResource("21_2l1x6")
+texture_normal = ExtResource("38_tsihs")
+texture_pressed = ExtResource("39_finq0")
+texture_hover = ExtResource("40_pnl2f")
+texture_disabled = ExtResource("41_u3b7o")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -330,11 +341,10 @@ stretch_mode = 5
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Paste Text"
-disabled = true
-texture_normal = ExtResource("34_eyt30")
-texture_pressed = ExtResource("35_tseid")
-texture_hover = ExtResource("36_qfjq1")
-texture_disabled = ExtResource("37_7ya76")
+texture_normal = ExtResource("42_3vs5n")
+texture_pressed = ExtResource("43_2ndw7")
+texture_hover = ExtResource("44_jorhu")
+texture_disabled = ExtResource("45_wrttj")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -348,10 +358,10 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Compile"
 disabled = true
-texture_normal = ExtResource("38_g8lxh")
-texture_pressed = ExtResource("39_uwr6v")
-texture_hover = ExtResource("40_gd8hl")
-texture_disabled = ExtResource("41_of6or")
+texture_normal = ExtResource("46_mqvm4")
+texture_pressed = ExtResource("47_j23c7")
+texture_hover = ExtResource("48_kt3n3")
+texture_disabled = ExtResource("49_ray88")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -360,10 +370,10 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 tooltip_text = "Run"
 disabled = true
-texture_normal = ExtResource("42_r0dft")
-texture_pressed = ExtResource("43_j3a0d")
-texture_hover = ExtResource("44_nbld7")
-texture_disabled = ExtResource("53_urgxg")
+texture_normal = ExtResource("50_4lvot")
+texture_pressed = ExtResource("51_l0leq")
+texture_hover = ExtResource("52_5gu0g")
+texture_disabled = ExtResource("53_mea07")
 ignore_texture_size = true
 stretch_mode = 5
 
@@ -387,17 +397,16 @@ theme_override_colors/caret_color = Color(0.309804, 0.309804, 0.309804, 1)
 theme_override_colors/line_number_color = Color(0.407843, 0.407843, 0.407843, 1)
 theme_override_colors/word_highlighted_color = Color(0.176471, 0.121569, 0.360784, 1)
 theme_override_colors/line_length_guideline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("46_0llj4")
+theme_override_fonts/font = ExtResource("54_uaa0v")
 theme_override_font_sizes/font_size = 14
-placeholder_text = "Click \"New\" or \"Open\" to start."
-editable = false
+placeholder_text = "Start typing here . . ."
 wrap_mode = 1
+highlight_all_occurrences = true
+highlight_current_line = true
+syntax_highlighter = SubResource("CodeHighlighter_5e1qo")
 scroll_smooth = true
 caret_blink = true
 caret_blink_interval = 0.57
-syntax_highlighter = SubResource("CodeHighlighter_efhv8")
-highlight_all_occurrences = true
-highlight_current_line = true
 line_folding = true
 gutters_draw_breakpoints_gutter = true
 gutters_draw_bookmarks = true
@@ -407,7 +416,7 @@ gutters_draw_fold_gutter = true
 indent_size = 5
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
-script = ExtResource("1_qvf0p")
+script = ExtResource("55_x2sb3")
 
 [node name="PanelContainer2" type="PanelContainer" parent="TextureRect/PanelContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -424,10 +433,5 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_g8mcn")
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/PanelContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[connection signal="file_selected" from="OpenFileDialog" to="." method="_on_open_file_dialog_file_selected"]
-[connection signal="file_selected" from="SaveAsFileDialog" to="." method="_on_save_as_file_dialog_file_selected"]
-[connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open" to="." method="_on_open_pressed"]
-[connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Save" to="." method="_on_save_pressed"]
-[connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Saveas" to="." method="_on_saveas_pressed"]
-[connection signal="text_changed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" to="." method="_on_code_edit_text_changed"]
+[connection signal="text_changed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" to="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" method="_on_text_changed"]

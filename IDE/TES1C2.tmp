@@ -427,7 +427,6 @@ layout_mode = 2
 
 [connection signal="file_selected" from="OpenFileDialog" to="." method="_on_open_file_dialog_file_selected"]
 [connection signal="file_selected" from="SaveAsFileDialog" to="." method="_on_save_as_file_dialog_file_selected"]
-[connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Save" to="." method="_on_save_pressed"]
 [connection signal="text_changed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" to="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" method="_on_text_changed"]

@@ -26,14 +26,3 @@ func _on_text_changed():
 		paste.disabled = false
 		compile.disabled = false
 		run.disabled = false
-	else:
-		save.disabled = true
-		saveas.disabled = true
-		close.disabled = true
-		undo.disabled = true
-		redo.disabled = true
-		copy.disabled = true
-		cut.disabled = true
-		paste.disabled = true
-		compile.disabled = true
-		run.disabled = true

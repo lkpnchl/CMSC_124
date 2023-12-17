@@ -36,8 +36,13 @@ func connect_signals():
 
 # Function called when the New File button is pressed
 func _on_new_pressed() -> void:
-	code_edit.editable = true
-	code_edit.placeholder_text = "Start typing here..."
+	if len(code_edit.text) > 0:
+		# check if file is saved
+		# else prompt pop up
+			print("hehe")
+	else:
+		code_edit.editable = true
+		code_edit.placeholder_text = "Start typing here..."
 	
 # Function called when the Open File button is pressed
 func _on_open_pressed() -> void:
@@ -56,16 +61,20 @@ func _on_file_selected(path: String) -> void:
 		if FileAccess.file_exists(path):
 			content = file.get_as_text()
 			code_edit.text = content
+			code_edit.editable = true
+			
 		else:
 			show_error("Failed to load the selected file.")
-	elif _on_save_pressed:
-		var file = FileAccess.open(path, FileAccess.WRITE)
-		print(file)
-		print(content)
-		content = code_edit.get_as_text()
-		print(content)
-		print(path)
-		file.store_string(content)
+	#elif _on_save_pressed:
+		# if new file
+		#var file = FileAccess.open(path, FileAccess.WRITE)
+		#print(file)
+		#print(content)
+		#content = code_edit.get_as_text()
+		#print(content)
+		#print(path)
+		#file.store_string(content)
+		# if not new file
 
 func _on_close_pressed() -> void:
 	_on_new_pressed()
@@ -73,3 +82,15 @@ func _on_close_pressed() -> void:
 func show_error(message: String) -> void:
 	# Display the error to the user, perhaps with a Popup or Label
 	print("Error: " + message)
+	
+func _on_save_file_dialog_file_selected(path):
+	var f = FileAccess.open(path,2)
+	f.store_string(code_edit.text)
+	var root = get_tree().get_root()
+	var buttons = root.get_node("Main/TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX")
+	var save = buttons.get_node("Save")
+	
+	save.disabled = true
+	
+	
+	

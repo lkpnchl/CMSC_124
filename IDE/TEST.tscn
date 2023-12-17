@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://bd5td832yixvn"]
+[gd_scene load_steps=65 format=3 uid="uid://bd5td832yixvn"]
 
 [ext_resource type="Texture2D" uid="uid://ud8oft07ou4d" path="res://bg/bg.jpg" id="1_o4lr0"]
 [ext_resource type="Script" path="res://MainIDE.gd" id="1_qvf0p"]
@@ -56,11 +56,13 @@
 [ext_resource type="Texture2D" uid="uid://daxd6vcwg1qu8" path="res://icons/run-disable.png" id="53_urgxg"]
 [ext_resource type="Script" path="res://CodeEdit.gd" id="55_p4m0x"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m4vfl"]
+
 [sub_resource type="Theme" id="Theme_bmwp3"]
 resource_local_to_scene = true
 default_font = ExtResource("2_va5tx")
 default_font_size = 12
-MarginContainer/styles/Style = null
+MarginContainer/styles/Style = SubResource("StyleBoxTexture_m4vfl")
 
 [sub_resource type="Theme" id="Theme_41a0g"]
 
@@ -82,15 +84,7 @@ corner_radius_bottom_left = 5
 corner_detail = 20
 expand_margin_top = 5.0
 
-[sub_resource type="CodeHighlighter" id="CodeHighlighter_5e1qo"]
-resource_local_to_scene = true
-number_color = Color(0.905882, 0, 0, 1)
-symbol_color = Color(0, 0.65098, 0.623529, 1)
-function_color = Color(0.768627, 0.396078, 0.439216, 1)
-member_variable_color = Color(0, 1, 0, 1)
-keyword_colors = {
-"": ""
-}
+[sub_resource type="CodeHighlighter" id="CodeHighlighter_efhv8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epdb2"]
 bg_color = Color(0.976471, 0.976471, 0.976471, 0.976471)
@@ -402,7 +396,7 @@ wrap_mode = 1
 scroll_smooth = true
 caret_blink = true
 caret_blink_interval = 0.57
-syntax_highlighter = SubResource("CodeHighlighter_5e1qo")
+syntax_highlighter = SubResource("CodeHighlighter_efhv8")
 highlight_all_occurrences = true
 highlight_current_line = true
 line_folding = true
@@ -431,5 +425,8 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_g8mcn")
 [node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/PanelContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
+[connection signal="file_selected" from="OpenFileDialog" to="." method="_on_open_file_dialog_file_selected"]
+[connection signal="file_selected" from="SaveFileDialog" to="." method="_on_save_file_dialog_file_selected"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Save" to="." method="_on_save_pressed"]
 [connection signal="text_changed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" to="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" method="_on_text_changed"]

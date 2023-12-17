@@ -1,5 +1,18 @@
 extends Control
 
+@onready var root = get_tree().get_root()
+@onready var buttons = root.get_node("Main/TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX")
+@onready var save = buttons.get_node("Save")
+@onready var saveas = buttons.get_node("Saveas")
+@onready var close = buttons.get_node("Close")
+@onready var undo = buttons.get_node("Undo")
+@onready var redo = buttons.get_node("Redo")
+@onready var copy = buttons.get_node("Copy")
+@onready var cut = buttons.get_node("Cut")
+@onready var paste = buttons.get_node("Paste")
+@onready var compile = buttons.get_node("Compile")
+@onready var run = buttons.get_node("Run")
+
 var open_file_dialog : FileDialog  # Reference to the FileDialog instance
 var save_as_file_dialog : FileDialog  # Reference to the FileDialog instance
 var content : String
@@ -7,22 +20,45 @@ var code_edit : CodeEdit  # Reference to the CodeEdit instance
 var file : FileAccess # For FileAccess
 #var path = 
 
+var app_name = "BOB Compiler"
+var current_file = "Untitled"
+
 func _ready():
+	update_window_title()
 	# Load references to FileDialog and CodeEdit
 	open_file_dialog = $OpenFileDialog
 	save_as_file_dialog = $SaveAsFileDialog
 	code_edit = get_node("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit")
 
+func update_window_title():
+	DisplayServer.window_set_title(app_name + ' - ' + current_file)
+	
 ### FILE NEW FUNCTION ###
 # Function called when the New File button is pressed
 func _on_new_pressed() -> void:
-	if len(code_edit.text) > 0:
-		# check if file is saved
-		# else prompt pop up
-			print("hehe")
+	if content!=code_edit.text || (len(code_edit.text)>0 && current_file=="Untitled"):
+		print("unsaved")
+		current_file = "Untitled"
+		update_window_title()
+		code_edit.text = ''
+		code_edit.placeholder_text = "Start typing here..."
 	else:
+		print("OK")
+		current_file = "Untitled"
+		update_window_title()
 		code_edit.editable = true
 		code_edit.placeholder_text = "Start typing here..."
+		
+	save.disabled = true
+	saveas.disabled = true
+	close.disabled = true
+	undo.disabled = true
+	redo.disabled = true
+	copy.disabled = true
+	cut.disabled = true
+	paste.disabled = true
+	compile.disabled = true
+	run.disabled = true
 
 ### FILE OPEN FUNCTION ###
 # Function called when the Open File button is pressed
@@ -39,33 +75,47 @@ func _on_open_file_dialog_file_selected(path):
 		code_edit.editable = true
 	else:
 		show_error("Failed to load the selected file.")
+	current_file = path.get_file()
+	update_window_title()
 	file.close()
 
 ### FILE SAVE FUNCTION ###
 # Function called when the Save File button is pressed
 func _on_save_pressed() -> void:
-	print("will be back")
-	#var file = FileAccess.open("path", FileAccess.WRITE)
-	#var test
-	#if test=="9":
-		#print("wompwomp")
-	#else: 
-		#print("mompmomp")
-	##if file.is_open:
-	#file.store_string(code_edit.text)
-	##else:
-		##save_as_file_dialog.popup_centered()
-	#var root = get_tree().get_root()
-	#var buttons = root.get_node("Main/TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX")
-	#var save = buttons.get_node("Save")
-	#save.disabled = true	
-		
+	var path = current_file
+	if path == 'Untitled':
+		print("wompwomp")
+		save_as_file_dialog.popup_centered()
+	else: 
+		print("mompmomp")
+		var file = FileAccess.open(path, FileAccess.WRITE)
+		file.store_string(code_edit.text)
+		file.close()
+	save.disabled = true	
+	
+func _on_saveas_pressed():
+	save_as_file_dialog.popup_centered()
+	
 func _on_save_as_file_dialog_file_selected(path):
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(code_edit.text)
+	current_file = path.get_file()
+	update_window_title()
+	save.disabled = true		
 
 func show_error(message: String) -> void:
 	# Display the error to the user, perhaps with a Popup or Label
 	print("Error: " + message)
 
-
+func _on_code_edit_text_changed():
+	if (len(code_edit.text) > 0) && (content!=code_edit.text):
+		save.disabled = false
+		saveas.disabled = false
+		close.disabled = false
+		undo.disabled = false
+		redo.disabled = false
+		copy.disabled = false
+		cut.disabled = false
+		paste.disabled = false
+		compile.disabled = false
+		run.disabled = false # Replace with function body.

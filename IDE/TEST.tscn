@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://bd5td832yixvn"]
+[gd_scene load_steps=64 format=3 uid="uid://bd5td832yixvn"]
 
 [ext_resource type="Texture2D" uid="uid://ud8oft07ou4d" path="res://bg/bg.jpg" id="1_o4lr0"]
 [ext_resource type="Script" path="res://MainIDE.gd" id="1_qvf0p"]
@@ -54,7 +54,6 @@
 [ext_resource type="Texture2D" uid="uid://cwt3nqtkjfh7f" path="res://icons/run-hover.png" id="44_nbld7"]
 [ext_resource type="FontFile" uid="uid://cqhs2u7h8gjsm" path="res://fonts/FiraCode-Medium.ttf" id="46_0llj4"]
 [ext_resource type="Texture2D" uid="uid://daxd6vcwg1qu8" path="res://icons/run-disable.png" id="53_urgxg"]
-[ext_resource type="Script" path="res://CodeEdit.gd" id="55_p4m0x"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m4vfl"]
 
@@ -408,7 +407,7 @@ gutters_draw_fold_gutter = true
 indent_size = 5
 auto_brace_completion_enabled = true
 auto_brace_completion_highlight_matching = true
-script = ExtResource("55_p4m0x")
+script = ExtResource("1_qvf0p")
 
 [node name="PanelContainer2" type="PanelContainer" parent="TextureRect/PanelContainer2/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -430,4 +429,5 @@ layout_mode = 2
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Save" to="." method="_on_save_pressed"]
-[connection signal="text_changed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" to="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" method="_on_text_changed"]
+[connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Saveas" to="." method="_on_saveas_pressed"]
+[connection signal="text_changed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" to="." method="_on_code_edit_text_changed"]

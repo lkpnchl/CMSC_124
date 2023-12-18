@@ -18,11 +18,11 @@ Install [Godot](https://godotengine.org/download/windows/) to run the file.
 - Paste button function
 - Compile button function
 - Run button function
-- Welcome & Loading Screen
+- ~~Welcome & Loading Screen~~
 - Extra Aesthetic
 
 ## Backend
-Language used is to be determined.
+Use python to run language
 
 #### 📋 TO DO:
 - Grammar

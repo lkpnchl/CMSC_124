@@ -2,8 +2,8 @@
 This repository is for our project in CMSC 124 where we are creating our own Integrated Development Environment (IDE) for our own programming language.
 
 ## NOTES
-IDE Folder contains the GUI for the IDE
-PL Folder contains the Grammar, Parser, Scanner, etc. Literally, the programming language
+- **IDE Folder** contains the GUI for the IDE.
+- **PL Folder** contains the Grammar, Parser, Scanner, etc. Literally, the programming language
 
 ## UI/UX
 Install [Godot](https://godotengine.org/download/windows/) to run the file.

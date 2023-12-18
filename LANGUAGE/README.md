@@ -16,4 +16,4 @@ python shell.py
 ```
 
 ## Needs Work
-BISAYACOMMUTER_grammar.txt: Requires proper updates for improved functionality.
+- **BISAYACOMMUTER_grammar.txt** - Requires proper updates for improved functionality.

@@ -20,10 +20,11 @@ var save_as_file_dialog : FileDialog  # Reference to the FileDialog instance
 var content : String
 var code_edit : CodeEdit  # Reference to the CodeEdit instance
 var file : FileAccess # For FileAccess
-#var path = 
 
 var app_name = "BOB Compiler"
 var current_file = "Untitled"
+var CC_press = 0
+
 
 func _ready():
 	update_window_title()
@@ -63,6 +64,7 @@ func _on_new_pressed() -> void:
 	paste_button.disabled = true
 	compile.disabled = true
 	run.disabled = true
+	CC_press = 0
 
 ### OPEN
 # Function called when the Open File button is pressed
@@ -115,10 +117,42 @@ func _on_close_pressed():
 ### UNDO
 func _on_undo_pressed():
 	code_edit.undo()
+	if code_edit.has_undo() && code_edit.has_redo():
+		undo_button.disabled = false
+		redo_button.disabled = false
+	elif !code_edit.has_undo():
+		undo_button.disabled = true
+		redo_button.disabled = false
+	elif !code_edit.has_redo():
+		undo_button.disabled = false
+		redo_button.disabled = true 
 		
 ### REDO
 func _on_redo_pressed():
-	code_edit.redo()		
+	code_edit.redo()
+	if code_edit.has_undo() && code_edit.has_redo():
+		undo_button.disabled = false
+		redo_button.disabled = false
+	elif !code_edit.has_undo():
+		undo_button.disabled = true
+		redo_button.disabled = false
+	elif !code_edit.has_redo():
+		undo_button.disabled = false
+		redo_button.disabled = true 		
+
+### CUT/COPY/PASTE
+func _on_copy_pressed():	
+	code_edit.copy()
+	CC_press = 1
+	paste_button.disabled = false
+	
+func _on_cut_pressed():	
+	code_edit.cut()
+	CC_press = 1
+	paste_button.disabled = false
+	
+func _on_paste_pressed():
+	code_edit.paste()
 
 func show_error(message: String) -> void:
 	# Display the error to the user, perhaps with a Popup or Label
@@ -128,9 +162,21 @@ func _on_code_edit_text_changed():
 	if len(code_edit.text) > 0:
 		save_button.disabled = false
 		saveas_button.disabled = false
-		close_button.disabled = false
+		close_button.disabled = false		
 		
-		## UNDO/REDO FUNCTIONS
+		copy_button.disabled = false
+		cut_button.disabled = false
+		
+		## COPY/CUT/PASTE FUNCTIONS
+		if copy_button.is_pressed()||cut_button.is_pressed():
+			CC_press = 1
+		if CC_press == 1:
+			paste_button.disabled = false
+		
+		compile.disabled = false
+		run.disabled = false
+		
+		## UNDO/REDO 
 		if code_edit.has_undo() && code_edit.has_redo():
 			undo_button.disabled = false
 			redo_button.disabled = false
@@ -140,12 +186,3 @@ func _on_code_edit_text_changed():
 		elif !code_edit.has_redo():
 			undo_button.disabled = false
 			redo_button.disabled = true 
-		
-		copy_button.disabled = false
-		cut_button.disabled = false
-		paste_button.disabled = true # Disabled unless Copy/Cut is performed
-		compile.disabled = false
-		run.disabled = false # Replace with function body.
-
-
-

@@ -89,9 +89,6 @@ number_color = Color(0.905882, 0, 0, 1)
 symbol_color = Color(0, 0.65098, 0.623529, 1)
 function_color = Color(0.768627, 0.396078, 0.439216, 1)
 member_variable_color = Color(0, 1, 0, 1)
-keyword_colors = {
-"": ""
-}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epdb2"]
 bg_color = Color(0.976471, 0.976471, 0.976471, 0.976471)
@@ -383,6 +380,10 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.11
 theme_override_styles/panel = SubResource("StyleBoxFlat_8vysx")
+
+[node name="TabBar" type="TabBar" parent="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_icons/close = ExtResource("24_b2rob")
 
 [node name="CodeEdit" type="CodeEdit" parent="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer"]
 layout_mode = 2

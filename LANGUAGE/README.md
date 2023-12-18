@@ -13,6 +13,7 @@ Run the following command to execute the language:
 
 ```bash
 python shell.py
+```
 
 ## Needs Work
 BISAYACOMMUTER_grammar.txt: Requires proper updates for improved functionality.

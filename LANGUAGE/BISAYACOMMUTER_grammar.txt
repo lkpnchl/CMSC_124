@@ -1,0 +1,92 @@
+statements  : NEWLINE* statement (NEWLINE+ statement)* NEWLINE*
+
+statement		: KEYWORD:RETURN expr?
+                        : KEYWORD:SUKLI expr?
+						: KEYWORD:CONTINUE
+						: KEYWORD:UNAHAN 
+						: KEYWORD:BREAK 
+						: KEYWORD:HUNONG 
+						: expr
+
+
+CIN = PLETE 
+COUT = SUKLI
+
+
+expr        : KEYWORD:VAR IDENTIFIER EQ expr
+            : comp-expr ((KEYWORD:AND|KEYWORD:OR) comp-expr)*
+            : comp-expr ((KEYWORD:UG|KEYWORD:KUN) comp-expr)*
+
+comp-expr   : NOT comp-expr
+            : arith-expr ((EE|LT|GT|LTE|GTE) arith-expr)*
+comp-expr   : DILI comp-expr
+            : arith-expr ((SAKTO|KUWANG|SOBRA|SAKWANG|SAKRA) arith-expr)*
+
+arith-expr  :	term ((PLUS|MINUS) term)*
+arith-expr  :	term ((DUGANGI|KWAI) term)*
+
+term        : factor ((MUL|DIV) factor)*
+term        : factor ((DAGHANON|BAHINON) factor)*
+
+
+factor      : (PLUS|MINUS) factor
+            : power
+factor      : (DUGANGI|KWAI) factor
+            : power
+
+power       : call (KAPILAON factor)*
+
+call        : atom (LPAREN (expr (COMMA expr)*)? RPAREN)?
+call        : atom (WALAPR (expr (COMMA expr)*)? TUOPR)?
+
+atom        : INT|FLOAT|STRING|IDENTIFIER
+atom        : PLETE|SINSILYO|TIBUOK|AYDI
+            : WALAPR expr TUOPR
+            : list-expr
+            : if-expr
+            : for-expr
+            : while-expr
+            : func-def
+
+list-expr   : LSQUARE (expr (COMMA expr)*)? RSQUARE
+
+if-expr     : KEYWORD:IF expr KEYWORD:THEN
+              (statement if-expr-b|if-expr-c?)
+            : KEYWORD:KUNG expr KEYWORD:DAYON
+              (statement if-expr-b|if-expr-c?)
+
+            | (NEWLINE statements KEYWORD:LUGAR|if-expr-b|if-expr-c)
+
+if-expr-b   : KEYWORD:ELIF expr KEYWORD:THEN
+              (statement if-expr-b|if-expr-c?)
+            : KEYWORD:KONDILI expr KEYWORD:DAYON
+              (statement if-expr-b|if-expr-c?)
+            | (NEWLINE statements KEYWORD:LUGAR|if-expr-b|if-expr-c)
+
+if-expr-c   : KEYWORD:ELSE
+            : KEYWORD:KINI
+              statement
+            | (NEWLINE statements KEYWORD:END)
+            | (NEWLINE statements KEYWORD:LUGAR)
+
+*for-expr    : KEYWORD:FOR IDENTIFIER EQ expr KEYWORD:TO expr 
+              (KEYWORD:STEP expr)? KEYWORD:THEN
+              statement
+            | (NEWLINE statements KEYWORD:END)
+            | (NEWLINE statements KEYWORD:LUGAR)
+
+while-expr  : KEYWORD:WHILE expr KEYWORD:THEN
+              statement
+            : KEYWORD:SAMTANG expr KEYWORD:THEN
+              statement
+            | (NEWLINE statements KEYWORD:END)
+            | (NEWLINE statements KEYWORD:LUGAR)
+
+func-def    : KEYWORD:FUN IDENTIFIER?
+              LPAREN (IDENTIFIER (COMMA IDENTIFIER)*)? RPAREN
+              (ARROW expr)
+            : KEYWORD: ROTA
+              WALAPR (AYDI (COMMA AYDI)*)? TUOPR
+              (ARROW expr)
+            | (NEWLINE statements KEYWORD:END)
+            | (NEWLINE statements KEYWORD:LUGAR)

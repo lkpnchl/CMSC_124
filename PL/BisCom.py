@@ -1947,18 +1947,6 @@ class Interpreter:
 
   ###################################
 
-  def visit_InputNode(self, node, context):
-    variable = node.variable_tok.value
-    value = input()
-    context.symbol_table.set(variable, String(value))
-    return RTResult().success(String(value))
-
-  def visit_OutputNode(self, node, context):
-    string = node.string_tok.value
-    value = self.visit(node.expression_node, context)
-    print(string, value)
-    return RTResult().success(Number.null)
-
   def visit_NumberNode(self, node, context):
     return RTResult().success(
       Number(node.tok.value).set_context(context).set_pos(node.pos_start, node.pos_end)

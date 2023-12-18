@@ -3,6 +3,7 @@ extends Control
 @onready var loadscreen = preload("res://load.tscn")
 @onready var root = get_tree().get_root()
 @onready var buttons = root.get_node("Main/TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX")
+@onready var new = buttons.get_node("New")
 @onready var save_button = buttons.get_node("Save")
 @onready var saveas_button = buttons.get_node("Saveas")
 @onready var close_button = buttons.get_node("Close")
@@ -16,6 +17,8 @@ extends Control
 
 var open_file_dialog : FileDialog  # Reference to the FileDialog instance
 var save_as_file_dialog : FileDialog  # Reference to the FileDialog instance
+var confirm_popup : ConfirmationDialog
+var open_popup : ConfirmationDialog
 
 var content : String
 var code_edit : CodeEdit  # Reference to the CodeEdit instance
@@ -25,35 +28,15 @@ var app_name = "BOB Compiler"
 var current_file = "Untitled"
 var CC_press = 0
 
-
 func _ready():
 	update_window_title()
 	# Load references to FileDialog and CodeEdit
 	open_file_dialog = $OpenFileDialog
-	save_as_file_dialog = $SaveFileDialog
+	save_as_file_dialog = $SaveAsFileDialog
+	confirm_popup = $ConfirmationDialog
+	open_popup = $OpenPopUp
 	code_edit = get_node("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit")
-	connect_signals()
-	
-func connect_signals():
-	# Connect the New button pressed signal to a function
-	var new_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/New")
-	new_button.pressed.connect(_on_new_pressed)
-	
-	# Connect the Open File button pressed signal to a function
-	var open_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open")
-	open_button.pressed.connect(_on_open_pressed)
-	open_file_dialog.file_selected.connect(_on_open_file_dialog_file_selected)
-	
-	# Connect the Save File button pressed signal to a function
-	var save_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Saveas")
-	save_button.pressed.connect(_on_save_pressed)
-	save_as_file_dialog.file_selected.connect(_on_save_as_file_dialog_file_selected)
-	
-	# Connect the Save As File button pressed signal to a function
-	var save_as_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Saveas")
-	save_as_button.pressed.connect(_on_save_pressed)
-	save_as_file_dialog.file_selected.connect(_on_save_as_file_dialog_file_selected)
-	
+
 func update_window_title():
 	DisplayServer.window_set_title(app_name + ' - ' + current_file)
 	
@@ -62,11 +45,7 @@ func update_window_title():
 func _on_new_pressed() -> void:
 	if len(code_edit.text)>0 && current_file=="Untitled":
 		print("unsaved")
-		# Display popup
-		code_edit.clear()		
-		code_edit.placeholder_text = "Start typing here..."		
-		current_file = "Untitled"
-		update_window_title()
+		confirm_popup.popup_centered()
 	else:
 		print("OK")
 		code_edit.clear()					
@@ -90,16 +69,21 @@ func _on_new_pressed() -> void:
 ### OPEN
 # Function called when the Open File button is pressed
 func _on_open_pressed() -> void:
-	# Open the file dialog
-	open_file_dialog.popup_centered()
+	if content != code_edit.text: 
+		open_popup.popup_centered()
+	else:	
+		open_file_dialog.popup_centered()	
 
 # Gets file from directory and opens it	
-func _on_open_file_dialog_file_selected(path: String) -> void: 
+func _on_open_file_dialog_file_selected(path):
 	file = FileAccess.open(path, FileAccess.READ)
 	if file.file_exists(path):
 		content = file.get_as_text()
 		code_edit.text = content
 		code_edit.editable = true
+		compile.disabled = false
+		run.disabled = false
+		close_button.disabled = false
 	else:
 		show_error("Failed to load the selected file.")
 	current_file = path.get_file()
@@ -116,8 +100,7 @@ func _on_save_pressed() -> void:
 	else: 
 		print("Save")
 		var file = FileAccess.open(path, FileAccess.WRITE)
-		content = code_edit.text
-		file.store_string(content)
+		file.store_string(code_edit.text)
 		file.close()
 	save_button.disabled = true	
 	
@@ -125,7 +108,7 @@ func _on_save_pressed() -> void:
 func _on_saveas_pressed():
 	save_as_file_dialog.popup_centered()
 	
-func _on_save_as_file_dialog_file_selected(path: String) -> void:
+func _on_save_as_file_dialog_file_selected(path):
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(code_edit.text)
 	current_file = path.get_file()
@@ -134,8 +117,14 @@ func _on_save_as_file_dialog_file_selected(path: String) -> void:
 
 ### CLOSE
 func _on_close_pressed():
-	pass # Replace with function body.
-
+	if (current_file=="Untitled" && len(code_edit.text)>0) || (content != code_edit.text):	
+		confirm_popup.popup_centered()
+	else: 
+		code_edit.clear()		
+		code_edit.editable = false
+		code_edit.placeholder_text = "Click \"New\" or \"Open\" to start."
+		close_button.disabled = true
+		
 ### UNDO
 func _on_undo_pressed():
 	code_edit.undo()
@@ -179,6 +168,19 @@ func _on_paste_pressed():
 func show_error(message: String) -> void:
 	# Display the error to the user, perhaps with a Popup or Label
 	print("Error: " + message)
+	
+### CONFIRM POP-UP (NEW & CLOSE)
+func _on_confirmation_dialog_confirmed():
+	code_edit.clear()		
+	code_edit.editable = false
+	code_edit.placeholder_text = "Click \"New\" or \"Open\" to start."
+	close_button.disabled = true
+	update_window_title()	
+	
+### OPEN POP-UP
+func _on_open_pop_up_confirmed():
+	open_file_dialog.popup_centered()	
+
 
 func _on_code_edit_text_changed():
 	if len(code_edit.text) > 0:

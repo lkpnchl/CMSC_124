@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://scu3rxjyy0qg"]
+[gd_scene load_steps=65 format=3 uid="uid://scu3rxjyy0qg"]
 
 [ext_resource type="Texture2D" uid="uid://ud8oft07ou4d" path="res://bg/bg.jpg" id="1_o4lr0"]
 [ext_resource type="Script" path="res://MainIDE.gd" id="1_qvf0p"]
@@ -7,6 +7,7 @@
 [ext_resource type="FontFile" uid="uid://ckufgv3xjdy1x" path="res://fonts/FiraCode-Regular.ttf" id="2_va5tx"]
 [ext_resource type="Script" path="res://OpenFileDialog.gd" id="2_vi52c"]
 [ext_resource type="Texture2D" uid="uid://csxxwthbhpe4u" path="res://icons/new-pressed.png" id="3_v2peo"]
+[ext_resource type="Script" path="res://ConfirmationDialog.gd" id="4_klljr"]
 [ext_resource type="Texture2D" uid="uid://ck3hlham8hwfg" path="res://icons/new-hover.png" id="4_lmoyn"]
 [ext_resource type="Texture2D" uid="uid://behq13fvg7kp3" path="res://icons/open-normal.png" id="6_56fdl"]
 [ext_resource type="Texture2D" uid="uid://b7s5o1kuttd7n" path="res://icons/new-disable.png" id="6_poir6"]
@@ -157,10 +158,23 @@ access = 2
 filters = PackedStringArray(".bob", ".BOB")
 script = ExtResource("2_vi52c")
 
+[node name="OpenPopUp" type="ConfirmationDialog" parent="."]
+script = ExtResource("4_klljr")
+
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 title = "You have unsaved changes."
-size = Vector2i(350, 100)
-ok_button_text = "Yes"
+size = Vector2i(300, 100)
+ok_button_text = "Ok"
+script = ExtResource("4_klljr")
+
+[node name="TextEdit" type="TextEdit" parent="ConfirmationDialog"]
+visible = false
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 342.0
+offset_bottom = 51.0
+placeholder_text = "Do you want to continue?"
+editable = false
 
 [node name="TextureRect" type="TextureRect" parent="."]
 show_behind_parent = true
@@ -431,6 +445,8 @@ layout_mode = 2
 
 [connection signal="file_selected" from="OpenFileDialog" to="." method="_on_open_file_dialog_file_selected"]
 [connection signal="file_selected" from="SaveAsFileDialog" to="." method="_on_save_as_file_dialog_file_selected"]
+[connection signal="confirmed" from="OpenPopUp" to="." method="_on_open_pop_up_confirmed"]
+[connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_confirmation_dialog_confirmed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/New" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Save" to="." method="_on_save_pressed"]

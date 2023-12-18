@@ -68,6 +68,7 @@ size_flags_vertical = 3
 script = ExtResource("1_anks7")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,7 +91,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../VideoStreamPlayer")
+root_node = NodePath("../ColorRect")
 libraries = {
 "": SubResource("AnimationLibrary_b6ryr")
 }

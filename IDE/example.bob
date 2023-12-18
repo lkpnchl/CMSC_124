@@ -1,7 +1,5 @@
-# This is a very useful piece of software 
+# Tesr
 
-
-SUKLI("Input Number: ")
 PASA ex = PLETE_KWARTA()
 
 SUKLI(ex)
@@ -37,5 +35,5 @@ LUGAR
 SUKLI("Greetings universe!")
 
 PARA i = 0 PADONG 5 DAYON
-	SUKLI(mekus(map(["l", "sp"], oopify), ", "))
+	SUKLI(join(map(["l", "sp"], oopify), ", "))
 LUGAR

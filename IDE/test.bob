@@ -1,1 +1,39 @@
-ty
+# Testing this again
+Okay
+PASA ex = PLETE_KWARTA()
+
+SUKLI(ex)
+
+PASA weh = ex + ex
+
+SUKLI(weh)
+
+ROTA oopify(prefix) -> prefix + "oop"
+
+ROTA join(elements, separator)
+	PASA result = ""
+	PASA len = SUKOD(elements)
+
+	PARA i = 0 PADONG len DAYON
+		PASA result = result + elements/i
+		KUNG i != len - 1 DAYON PASA result = result + separator
+	LUGAR
+	
+	BALIK result
+LUGAR
+
+ROTA map(elements, func)
+	PASA new_elements = []
+
+	PARA i = 0 PADONG SUKOD(elements) DAYON
+		PUNO(new_elements, func(elements/i))
+	LUGAR
+
+	BALIK new_elements
+LUGAR
+
+SUKLI("Greetings universe!")
+
+PARA i = 0 PADONG 5 DAYON
+	SUKLI(join(map(["l", "sp"], oopify), ", "))
+LUGAR

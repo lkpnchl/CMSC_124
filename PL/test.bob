@@ -1,0 +1,24 @@
+SUKLI("input: "); PASA i = PLETE_KWARTA()
+
+SUKLI(i)
+
+PASA add = i + i
+
+PASA minus = i - i
+
+PASA mul = i * i
+
+PASA div = i / i
+
+SUKLI("add: ")
+SUKLI(add)
+
+SUKLI("minus: ")
+SUKLI(minus)
+
+SUKLI("mul: "); SUKLI(mul)
+
+SUKLI(join("mul: ", oopify), ", ")
+
+SUKLI("div: ")
+SUKLI(div)

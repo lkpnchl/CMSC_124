@@ -115,6 +115,7 @@ grow_vertical = 2
 script = ExtResource("1_7urna")
 
 [node name="Control" parent="." instance=ExtResource("56_53etq")]
+use_parent_material = true
 layout_mode = 1
 
 [node name="OpenFileDialog" type="FileDialog" parent="."]
@@ -435,4 +436,5 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_g8mcn")
 layout_mode = 2
 
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Saveas" to="SaveFileDialog" method="_on_saveas_pressed"]
 [connection signal="text_changed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" to="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" method="_on_text_changed"]

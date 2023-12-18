@@ -115,7 +115,6 @@ grow_vertical = 2
 script = ExtResource("1_7urna")
 
 [node name="Control" parent="." instance=ExtResource("56_53etq")]
-visible = false
 use_parent_material = true
 layout_mode = 1
 
@@ -404,12 +403,12 @@ theme_override_fonts/font = ExtResource("54_uaa0v")
 theme_override_font_sizes/font_size = 14
 placeholder_text = "Start typing here . . ."
 wrap_mode = 1
+highlight_all_occurrences = true
+highlight_current_line = true
+syntax_highlighter = SubResource("CodeHighlighter_5e1qo")
 scroll_smooth = true
 caret_blink = true
 caret_blink_interval = 0.57
-syntax_highlighter = SubResource("CodeHighlighter_5e1qo")
-highlight_all_occurrences = true
-highlight_current_line = true
 line_folding = true
 gutters_draw_breakpoints_gutter = true
 gutters_draw_bookmarks = true

@@ -29,9 +29,30 @@ func _ready():
 	update_window_title()
 	# Load references to FileDialog and CodeEdit
 	open_file_dialog = $OpenFileDialog
-	save_as_file_dialog = $SaveAsFileDialog
+	save_as_file_dialog = $SaveFileDialog
 	code_edit = get_node("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit")
-
+	connect_signals()
+	
+func connect_signals():
+	# Connect the New button pressed signal to a function
+	var new_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/New")
+	new_button.pressed.connect(_on_new_pressed)
+	
+	# Connect the Open File button pressed signal to a function
+	var open_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open")
+	open_button.pressed.connect(_on_open_pressed)
+	open_file_dialog.file_selected.connect(_on_open_file_dialog_file_selected)
+	
+	# Connect the Save File button pressed signal to a function
+	var save_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Saveas")
+	save_button.pressed.connect(_on_save_pressed)
+	save_as_file_dialog.file_selected.connect(_on_save_as_file_dialog_file_selected)
+	
+	# Connect the Save As File button pressed signal to a function
+	var save_as_button : TextureButton = get_node_or_null("TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Saveas")
+	save_as_button.pressed.connect(_on_save_pressed)
+	save_as_file_dialog.file_selected.connect(_on_save_as_file_dialog_file_selected)
+	
 func update_window_title():
 	DisplayServer.window_set_title(app_name + ' - ' + current_file)
 	
@@ -71,7 +92,7 @@ func _on_open_pressed() -> void:
 	open_file_dialog.popup_centered()
 
 # Gets file from directory and opens it	
-func _on_open_file_dialog_file_selected(path):
+func _on_open_file_dialog_file_selected(path: String) -> void: 
 	file = FileAccess.open(path, FileAccess.READ)
 	if file.file_exists(path):
 		content = file.get_as_text()
@@ -93,19 +114,21 @@ func _on_save_pressed() -> void:
 	else: 
 		print("Save As")
 		var file = FileAccess.open(path, FileAccess.WRITE)
-		file.store_string(code_edit.text)
+		content = code_edit.text
+		file.store_string(content)
 		file.close()
 	save.disabled = true	
 	
 func _on_saveas_pressed():
 	save_as_file_dialog.popup_centered()
 	
-func _on_save_as_file_dialog_file_selected(path):
+func _on_save_as_file_dialog_file_selected(path: String) -> void:
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_string(code_edit.text)
 	current_file = path.get_file()
 	update_window_title()
 	save.disabled = true		
+	
 
 ### CLOSE
 

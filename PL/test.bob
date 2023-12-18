@@ -10,7 +10,15 @@ PASA mul = i * i
 
 PASA div = i / i
 
-SUKLI("d", add)
+SUKLI("add: ")
+SUKLI(add)
+
+SUKLI("minus: ")
 SUKLI(minus)
-SUKLI(mul)
+
+SUKLI("mul: "); SUKLI(mul)
+
+SUKLI(join("mul: ", oopify), ", ")
+
+SUKLI("div: ")
 SUKLI(div)

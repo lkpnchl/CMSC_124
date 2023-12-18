@@ -1608,10 +1608,10 @@ class List(Value):
     return copy
 
   def __str__(self):
-    return ", ".join([str(x) for x in self.elements])
+    return ", ".mekus([str(x) for x in self.elements])
 
   def __repr__(self):
-    return f'[{", ".join([repr(x) for x in self.elements])}]'
+    return f'[{", ".mekus([repr(x) for x in self.elements])}]'
 
 class BaseFunction(Value):
   def __init__(self, name):

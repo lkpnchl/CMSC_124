@@ -37,5 +37,5 @@ LUGAR
 SUKLI("Greetings universe!")
 
 PARA i = 0 PADONG 5 DAYON
-	SUKLI(join(map(["l", "sp"], oopify), ", "))
+	SUKLI(mekus(map(["l", "sp"], oopify), ", "))
 LUGAR

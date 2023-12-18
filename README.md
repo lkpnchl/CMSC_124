@@ -12,8 +12,8 @@ Install [Godot](https://godotengine.org/download/windows/) to run the file.
 - ~~Save button function~~
 - ~~Save As button function~~
 - Close button function
-- Undo button function
-- Redo button function
+- ~~Undo button function~~
+- ~~Redo button function~~
 - Copy button function
 - Cut  button function
 - Paste button function

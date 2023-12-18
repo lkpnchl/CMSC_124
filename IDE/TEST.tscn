@@ -430,6 +430,7 @@ layout_mode = 2
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Open" to="." method="_on_open_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Save" to="." method="_on_save_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Saveas" to="." method="_on_saveas_pressed"]
+[connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Undo" to="." method="_on_undo_pressed"]
 [connection signal="pressed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX/Redo" to="." method="_on_redo_pressed"]
 [connection signal="text_changed" from="TextureRect/PanelContainer2/MarginContainer/VBoxContainer/PanelContainer/CodeEdit" to="." method="_on_code_edit_text_changed"]

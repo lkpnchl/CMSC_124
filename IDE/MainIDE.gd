@@ -3,14 +3,14 @@ extends Control
 @onready var loadscreen = preload("res://load.tscn")
 @onready var root = get_tree().get_root()
 @onready var buttons = root.get_node("Main/TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX")
-@onready var save = buttons.get_node("Save")
-@onready var saveas = buttons.get_node("Saveas")
-@onready var close = buttons.get_node("Close")
-@onready var undo = buttons.get_node("Undo")
-@onready var redo = buttons.get_node("Redo")
-@onready var copy = buttons.get_node("Copy")
-@onready var cut = buttons.get_node("Cut")
-@onready var paste = buttons.get_node("Paste")
+@onready var save_button = buttons.get_node("Save")
+@onready var saveas_button = buttons.get_node("Saveas")
+@onready var close_button = buttons.get_node("Close")
+@onready var undo_button = buttons.get_node("Undo")
+@onready var redo_button = buttons.get_node("Redo")
+@onready var copy_button = buttons.get_node("Copy")
+@onready var cut_button = buttons.get_node("Cut")
+@onready var paste_button = buttons.get_node("Paste")
 @onready var compile = buttons.get_node("Compile")
 @onready var run = buttons.get_node("Run")
 
@@ -38,7 +38,7 @@ func update_window_title():
 ### NEW
 # Function called when the New File button is pressed
 func _on_new_pressed() -> void:
-	if content!=code_edit.text || (len(code_edit.text)>0 && current_file=="Untitled"):
+	if len(code_edit.text)>0 && current_file=="Untitled":
 		print("unsaved")
 		# Display popup
 		code_edit.clear()		
@@ -53,14 +53,14 @@ func _on_new_pressed() -> void:
 		update_window_title()
 		code_edit.editable = true	
 	
-	save.disabled = true
-	saveas.disabled = true
-	close.disabled = true
-	undo.disabled = true
-	redo.disabled = true
-	copy.disabled = true
-	cut.disabled = true
-	paste.disabled = true
+	save_button.disabled = true
+	saveas_button.disabled = true
+	close_button.disabled = true
+	undo_button.disabled = true
+	redo_button.disabled = true
+	copy_button.disabled = true
+	cut_button.disabled = true
+	paste_button.disabled = true
 	compile.disabled = true
 	run.disabled = true
 
@@ -95,7 +95,7 @@ func _on_save_pressed() -> void:
 		var file = FileAccess.open(path, FileAccess.WRITE)
 		file.store_string(code_edit.text)
 		file.close()
-	save.disabled = true	
+	save_button.disabled = true	
 	
 ### SAVE AS	
 func _on_saveas_pressed():
@@ -106,34 +106,46 @@ func _on_save_as_file_dialog_file_selected(path):
 	file.store_string(code_edit.text)
 	current_file = path.get_file()
 	update_window_title()
-	save.disabled = true		
+	save_button.disabled = true		
 
 ### CLOSE
+func _on_close_pressed():
+	pass # Replace with function body.
 
 ### UNDO
 func _on_undo_pressed():
 	code_edit.undo()
-	if code_edit.has_undo()==false:
-		print("disable")
-	
+		
 ### REDO
 func _on_redo_pressed():
-	code_edit.redo()
-
+	code_edit.redo()		
 
 func show_error(message: String) -> void:
 	# Display the error to the user, perhaps with a Popup or Label
 	print("Error: " + message)
 
 func _on_code_edit_text_changed():
-	if (len(code_edit.text) > 0) && (content!=code_edit.text):
-		save.disabled = false
-		saveas.disabled = false
-		close.disabled = false
-		undo.disabled = false 
-		redo.disabled = true # Disabled unless Undo is performed
-		copy.disabled = false
-		cut.disabled = false
-		paste.disabled = true # Disabled unless Copy/Cut is performed
+	if len(code_edit.text) > 0:
+		save_button.disabled = false
+		saveas_button.disabled = false
+		close_button.disabled = false
+		
+		## UNDO/REDO FUNCTIONS
+		if code_edit.has_undo() && code_edit.has_redo():
+			undo_button.disabled = false
+			redo_button.disabled = false
+		elif !code_edit.has_undo():
+			undo_button.disabled = true
+			redo_button.disabled = false
+		elif !code_edit.has_redo():
+			undo_button.disabled = false
+			redo_button.disabled = true 
+		
+		copy_button.disabled = false
+		cut_button.disabled = false
+		paste_button.disabled = true # Disabled unless Copy/Cut is performed
 		compile.disabled = false
 		run.disabled = false # Replace with function body.
+
+
+

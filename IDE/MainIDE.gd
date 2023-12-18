@@ -35,7 +35,7 @@ func _ready():
 func update_window_title():
 	DisplayServer.window_set_title(app_name + ' - ' + current_file)
 	
-### FILE NEW FUNCTION ###
+### NEW
 # Function called when the New File button is pressed
 func _on_new_pressed() -> void:
 	if content!=code_edit.text || (len(code_edit.text)>0 && current_file=="Untitled"):
@@ -64,7 +64,7 @@ func _on_new_pressed() -> void:
 	compile.disabled = true
 	run.disabled = true
 
-### FILE OPEN FUNCTION ###
+### OPEN
 # Function called when the Open File button is pressed
 func _on_open_pressed() -> void:
 	# Open the file dialog
@@ -83,7 +83,7 @@ func _on_open_file_dialog_file_selected(path):
 	update_window_title()
 	file.close()
 
-### FILE SAVE FUNCTION ###
+### SAVE
 # Function called when the Save File button is pressed
 func _on_save_pressed() -> void:
 	var path = current_file
@@ -91,12 +91,13 @@ func _on_save_pressed() -> void:
 		print("Save As")
 		save_as_file_dialog.popup_centered()
 	else: 
-		print("Save As")
+		print("Save")
 		var file = FileAccess.open(path, FileAccess.WRITE)
 		file.store_string(code_edit.text)
 		file.close()
 	save.disabled = true	
 	
+### SAVE AS	
 func _on_saveas_pressed():
 	save_as_file_dialog.popup_centered()
 	
@@ -112,6 +113,8 @@ func _on_save_as_file_dialog_file_selected(path):
 ### UNDO
 func _on_undo_pressed():
 	code_edit.undo()
+	if code_edit.has_undo()==false:
+		print("disable")
 	
 ### REDO
 func _on_redo_pressed():

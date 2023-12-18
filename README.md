@@ -9,13 +9,15 @@ This repository is for our project in CMSC 124 where we are creating our own Int
 Install [Godot](https://godotengine.org/download/windows/) to run the file.
 
 #### 📋 TO DO:
+- New button function
 - ~~Save button function~~
 - ~~Save As button function~~
-- Undo button function
-- Redo button function
-- Copy button function
-- Cut  button function
-- Paste button function
+- Close button function
+- ~~Undo button function~~
+- ~~Redo button function~~
+- ~~Copy button function~~
+- ~~Cut  button function~~
+- ~~Paste button function~~
 - Compile button function
 - Run button function
 - ~~Welcome & Loading Screen~~

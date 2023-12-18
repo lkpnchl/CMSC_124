@@ -3,14 +3,14 @@ extends Control
 @onready var loadscreen = preload("res://load.tscn")
 @onready var root = get_tree().get_root()
 @onready var buttons = root.get_node("Main/TextureRect/PanelContainer2/MarginContainer/VBoxContainer/hbOX")
-@onready var save = buttons.get_node("Save")
-@onready var saveas = buttons.get_node("Saveas")
-@onready var close = buttons.get_node("Close")
-@onready var undo = buttons.get_node("Undo")
-@onready var redo = buttons.get_node("Redo")
-@onready var copy = buttons.get_node("Copy")
-@onready var cut = buttons.get_node("Cut")
-@onready var paste = buttons.get_node("Paste")
+@onready var save_button = buttons.get_node("Save")
+@onready var saveas_button = buttons.get_node("Saveas")
+@onready var close_button = buttons.get_node("Close")
+@onready var undo_button = buttons.get_node("Undo")
+@onready var redo_button = buttons.get_node("Redo")
+@onready var copy_button = buttons.get_node("Copy")
+@onready var cut_button = buttons.get_node("Cut")
+@onready var paste_button = buttons.get_node("Paste")
 @onready var compile = buttons.get_node("Compile")
 @onready var run = buttons.get_node("Run")
 
@@ -20,10 +20,11 @@ var save_as_file_dialog : FileDialog  # Reference to the FileDialog instance
 var content : String
 var code_edit : CodeEdit  # Reference to the CodeEdit instance
 var file : FileAccess # For FileAccess
-#var path = 
 
 var app_name = "BOB Compiler"
 var current_file = "Untitled"
+var CC_press = 0
+
 
 func _ready():
 	update_window_title()
@@ -56,10 +57,10 @@ func connect_signals():
 func update_window_title():
 	DisplayServer.window_set_title(app_name + ' - ' + current_file)
 	
-### FILE NEW FUNCTION ###
+### NEW
 # Function called when the New File button is pressed
 func _on_new_pressed() -> void:
-	if content!=code_edit.text || (len(code_edit.text)>0 && current_file=="Untitled"):
+	if len(code_edit.text)>0 && current_file=="Untitled":
 		print("unsaved")
 		# Display popup
 		code_edit.clear()		
@@ -74,18 +75,19 @@ func _on_new_pressed() -> void:
 		update_window_title()
 		code_edit.editable = true	
 	
-	save.disabled = true
-	saveas.disabled = true
-	close.disabled = true
-	undo.disabled = true
-	redo.disabled = true
-	copy.disabled = true
-	cut.disabled = true
-	paste.disabled = true
+	save_button.disabled = true
+	saveas_button.disabled = true
+	close_button.disabled = true
+	undo_button.disabled = true
+	redo_button.disabled = true
+	copy_button.disabled = true
+	cut_button.disabled = true
+	paste_button.disabled = true
 	compile.disabled = true
 	run.disabled = true
+	CC_press = 0
 
-### FILE OPEN FUNCTION ###
+### OPEN
 # Function called when the Open File button is pressed
 func _on_open_pressed() -> void:
 	# Open the file dialog
@@ -104,7 +106,7 @@ func _on_open_file_dialog_file_selected(path: String) -> void:
 	update_window_title()
 	file.close()
 
-### FILE SAVE FUNCTION ###
+### SAVE
 # Function called when the Save File button is pressed
 func _on_save_pressed() -> void:
 	var path = current_file
@@ -112,13 +114,14 @@ func _on_save_pressed() -> void:
 		print("Save As")
 		save_as_file_dialog.popup_centered()
 	else: 
-		print("Save As")
+		print("Save")
 		var file = FileAccess.open(path, FileAccess.WRITE)
 		content = code_edit.text
 		file.store_string(content)
 		file.close()
-	save.disabled = true	
+	save_button.disabled = true	
 	
+### SAVE AS	
 func _on_saveas_pressed():
 	save_as_file_dialog.popup_centered()
 	
@@ -127,33 +130,81 @@ func _on_save_as_file_dialog_file_selected(path: String) -> void:
 	file.store_string(code_edit.text)
 	current_file = path.get_file()
 	update_window_title()
-	save.disabled = true		
-	
+	save_button.disabled = true		
 
 ### CLOSE
+func _on_close_pressed():
+	pass # Replace with function body.
 
 ### UNDO
 func _on_undo_pressed():
 	code_edit.undo()
-	
+	if code_edit.has_undo() && code_edit.has_redo():
+		undo_button.disabled = false
+		redo_button.disabled = false
+	elif !code_edit.has_undo():
+		undo_button.disabled = true
+		redo_button.disabled = false
+	elif !code_edit.has_redo():
+		undo_button.disabled = false
+		redo_button.disabled = true 
+		
 ### REDO
 func _on_redo_pressed():
 	code_edit.redo()
+	if code_edit.has_undo() && code_edit.has_redo():
+		undo_button.disabled = false
+		redo_button.disabled = false
+	elif !code_edit.has_undo():
+		undo_button.disabled = true
+		redo_button.disabled = false
+	elif !code_edit.has_redo():
+		undo_button.disabled = false
+		redo_button.disabled = true 		
 
+### CUT/COPY/PASTE
+func _on_copy_pressed():	
+	code_edit.copy()
+	CC_press = 1
+	paste_button.disabled = false
+	
+func _on_cut_pressed():	
+	code_edit.cut()
+	CC_press = 1
+	paste_button.disabled = false
+	
+func _on_paste_pressed():
+	code_edit.paste()
 
 func show_error(message: String) -> void:
 	# Display the error to the user, perhaps with a Popup or Label
 	print("Error: " + message)
 
 func _on_code_edit_text_changed():
-	if (len(code_edit.text) > 0) && (content!=code_edit.text):
-		save.disabled = false
-		saveas.disabled = false
-		close.disabled = false
-		undo.disabled = false 
-		redo.disabled = true # Disabled unless Undo is performed
-		copy.disabled = false
-		cut.disabled = false
-		paste.disabled = true # Disabled unless Copy/Cut is performed
+	if len(code_edit.text) > 0:
+		save_button.disabled = false
+		saveas_button.disabled = false
+		close_button.disabled = false		
+		
+		copy_button.disabled = false
+		cut_button.disabled = false
+		
+		## COPY/CUT/PASTE FUNCTIONS
+		if copy_button.is_pressed()||cut_button.is_pressed():
+			CC_press = 1
+		if CC_press == 1:
+			paste_button.disabled = false
+		
 		compile.disabled = false
-		run.disabled = false # Replace with function body.
+		run.disabled = false
+		
+		## UNDO/REDO 
+		if code_edit.has_undo() && code_edit.has_redo():
+			undo_button.disabled = false
+			redo_button.disabled = false
+		elif !code_edit.has_undo():
+			undo_button.disabled = true
+			redo_button.disabled = false
+		elif !code_edit.has_redo():
+			undo_button.disabled = false
+			redo_button.disabled = true 

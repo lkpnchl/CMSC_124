@@ -54,17 +54,17 @@ func _on_new_pressed() -> void:
 		update_window_title()
 		code_edit.editable = true	
 	
-	save_button.disabled = true
-	saveas_button.disabled = true
-	close_button.disabled = true
-	undo_button.disabled = true
-	redo_button.disabled = true
-	copy_button.disabled = true
-	cut_button.disabled = true
-	paste_button.disabled = true
-	compile.disabled = true
-	run.disabled = true
-	CC_press = 0
+	#save_button.disabled = true
+	#saveas_button.disabled = true
+	#close_button.disabled = true
+	#undo_button.disabled = true
+	#redo_button.disabled = true
+	#copy_button.disabled = true
+	#cut_button.disabled = true
+	#paste_button.disabled = true
+	#compile.disabled = true
+	#run.disabled = true
+	#CC_press = 0
 
 ### OPEN
 # Function called when the Open File button is pressed
@@ -124,7 +124,8 @@ func _on_close_pressed():
 		code_edit.editable = false
 		code_edit.placeholder_text = "Click \"New\" or \"Open\" to start."
 		close_button.disabled = true
-		
+	
+	
 ### UNDO
 func _on_undo_pressed():
 	code_edit.undo()
@@ -176,6 +177,18 @@ func _on_confirmation_dialog_confirmed():
 	code_edit.placeholder_text = "Click \"New\" or \"Open\" to start."
 	close_button.disabled = true
 	update_window_title()	
+	
+	save_button.disabled = true
+	saveas_button.disabled = true
+	close_button.disabled = true
+	undo_button.disabled = true
+	redo_button.disabled = true
+	copy_button.disabled = true
+	cut_button.disabled = true
+	paste_button.disabled = true
+	compile.disabled = true
+	run.disabled = true
+	CC_press = 0
 	
 ### OPEN POP-UP
 func _on_open_pop_up_confirmed():

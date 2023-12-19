@@ -1,7 +1,8 @@
-[gd_scene load_steps=65 format=3 uid="uid://scu3rxjyy0qg"]
+[gd_scene load_steps=66 format=3 uid="uid://scu3rxjyy0qg"]
 
 [ext_resource type="Texture2D" uid="uid://ud8oft07ou4d" path="res://bg/bg.jpg" id="1_o4lr0"]
 [ext_resource type="Script" path="res://MainIDE.gd" id="1_qvf0p"]
+[ext_resource type="PackedScene" uid="uid://bp6dt0btudhhi" path="res://load.tscn" id="2_8x03i"]
 [ext_resource type="FontFile" uid="uid://bxhoek7fge4o" path="res://fonts/FiraCode-Bold.ttf" id="2_ddpcp"]
 [ext_resource type="Texture2D" uid="uid://doxjeie4hki2e" path="res://icons/new-normal.png" id="2_osjhi"]
 [ext_resource type="FontFile" uid="uid://ckufgv3xjdy1x" path="res://fonts/FiraCode-Regular.ttf" id="2_va5tx"]
@@ -109,6 +110,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qvf0p")
+
+[node name="Control2" parent="." instance=ExtResource("2_8x03i")]
+layout_mode = 1
 
 [node name="OpenFileDialog" type="FileDialog" parent="."]
 transparent_bg = true

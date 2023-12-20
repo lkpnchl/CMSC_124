@@ -1,24 +1,12 @@
-SUKLI("input: "); PASA i = PLETE_KWARTA()
+PARA i = 0 PADONG 10 DAYON		
+    SUKLI(10)
+LUGAR                                                                                                                                                                                                                                                                                                                                                                                         
 
-SUKLI(i)
+PASA x = 5
+PASA ex = PLETE_KWARTA()
 
-PASA add = i + i
-
-PASA minus = i - i
-
-PASA mul = i * i
-
-PASA div = i / i
-
-SUKLI("add: ")
-SUKLI(add)
-
-SUKLI("minus: ")
-SUKLI(minus)
-
-SUKLI("mul: "); SUKLI(mul)
-
-SUKLI(join("mul: ", oopify), ", ")
-
-SUKLI("div: ")
-SUKLI(div)
+KUNG (x == ex) DAYON
+    SUKLI("You entered a number!")
+KINI
+    SUKLI("You didn't enter a number!")
+LUGAR

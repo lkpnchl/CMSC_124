@@ -1,18 +1,8 @@
 # This is a very useful piece of software 
 
-
-SUKLI("Input Number: ")
-PASA ex = PLETE_KWARTA()
-
-SUKLI(ex)
-
-PASA weh = ex + ex
-
-SUKLI(weh)
-
 ROTA oopify(prefix) -> prefix + "oop"
 
-ROTA join(elements, separator)
+ROTA mekus(elements, separator)
 	PASA result = ""
 	PASA len = SUKOD(elements)
 

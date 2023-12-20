@@ -1,1 +1,12 @@
-Test
+PARA i = 0 PADONG 10 DAYON		
+    SUKLI(10)
+LUGAR                                                                                                                                                                                                                                                                                                                                                                                         
+
+PASA x = 5
+PASA ex = PLETE_KWARTA()
+
+KUNG (x == ex) DAYON
+    SUKLI("You entered a number!")
+KINI
+    SUKLI("You didn't enter a number!")
+LUGAR

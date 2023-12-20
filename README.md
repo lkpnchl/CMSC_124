@@ -3,34 +3,31 @@ This repository is for our project in CMSC 124 where we are creating our own Int
 
 ## NOTES
 - **IDE Folder** contains the GUI for the IDE.
-- **PL Folder** contains the Grammar, Parser, Scanner, etc. Literally, the programming language
+- **PL Folder** contains the Grammar, Parser, Scanner, etc. literally, the programming language
 
-## UI/UX
-Install [Godot](https://godotengine.org/download/windows/) to run the file.
-
-#### 📋 TO DO:
-- New button function
-- ~~Save button function~~
-- ~~Save As button function~~
-- ~~Close button function~~
-- ~~Undo button function~~
-- ~~Redo button function~~
-- ~~Copy button function~~
-- ~~Cut  button function~~
-- ~~Paste button function~~
-- Compile button function
-- Run button function
-- ~~Welcome & Loading Screen~~
-- Extra Aesthetic
-
-## Backend
-Use python to run language
+## IDE
+Install [Godot](https://godotengine.org/download/windows/)
 
 #### 📋 TO DO:
-- Grammar
-- Parser
-- Scanner
-- Code Generation
+- [X] New button function
+- [X] Save button function
+- [X] Save As button function
+- [X] Close button function
+- [X] Undo button function
+- [X] Redo button function
+- [X] Copy button function
+- [X] Cut  button function
+- [X] Paste button function
+- [ ] Compile button function
+- [ ] Run button function
+- [X] Welcome & Loading Screen
+- [ ] Extra Aesthetic
+
+#### 📋 TO DO:
+- [X] Grammar
+- [X] Parser
+- [ ] Scanner
+- [ ] Code Generation
 
 
 
